@@ -1,7 +1,7 @@
 ---
 title: "MLIR unifies the infrastructure for high-performance ML models in TensorFlow."
 date: 2019-11-13T09:01:53-08:00
-draft: true
+draft: false
 ---
 
 
