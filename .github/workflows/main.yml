@@ -12,6 +12,8 @@ jobs:
     - uses: actions/checkout@master
       # with:
       #   submodules: true
+      run: pwd
+      run: ls -lh
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
@@ -19,7 +21,13 @@ jobs:
         hugo-version: '0.59.1'
         # extended: true
 
+    - name: After Hugo
+      run: pwd
+      run: ls -lh
+
     - name: Build
+      run: pwd
+      run: ls -lh
       run: hugo --minify
 
     - name: Deploy
