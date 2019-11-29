@@ -8,10 +8,10 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
       - name: deploy
-        uses: pkanwar23/pkanwar23.github.io@master
+        uses: joker-eph/joker-eph.github.io@www
         with:
           PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         env:
           HUGO_VERSION: 0.59.1
-          TARGET_REPO: pkanwar23/pkanwar23.github.io
+          TARGET_REPO: joker-eph/joker-eph.github.io
           PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
