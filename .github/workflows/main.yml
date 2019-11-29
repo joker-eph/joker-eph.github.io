@@ -1,17 +1,31 @@
-on: [push]
+name: github pages
+
+on:
+  push:
+    branches:
+    - master
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
+  build-deploy:
+    runs-on: ubuntu-18.04
     steps:
-      - name: Check out code
-        uses: actions/checkout@v1
-      - name: deploy
-        uses: joker-eph/joker-eph.github.io@www
-        with:
-          PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          HUGO_VERSION: 0.59.1
-          TARGET_REPO: joker-eph/joker-eph.github.io
-          PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@master
+      # with:
+      #   submodules: true
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.59.1'
+        # extended: true
+
+    - name: Build
+      run: hugo --minify
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2.5.0
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: www
+        PUBLISH_DIR: ./public
+
