@@ -12,6 +12,7 @@ jobs:
     - uses: actions/checkout@master
       # with:
       #   submodules: true
+    - name After checkout
       run: pwd
       run: ls -lh
 
